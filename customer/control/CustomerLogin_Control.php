@@ -16,10 +16,10 @@ if (isset($_POST["submitlogin"])) {
 
             $_SESSION["User_name"] = $_POST["uname"];
             $_SESSION["Password"] = $_POST["password"];
-            if (!empty($_SESSION["User_name"]))
-            {
+             if (!empty($_SESSION["User_name"]))
+             {
                 header("Location: ../View/customer_dashboard.php");
-            }
+             }
         }
         if(empty($_REQUEST["uname"])||(empty($_REQUEST['password'])))
             {

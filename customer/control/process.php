@@ -1,4 +1,8 @@
 <?php
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+}
 $Error_f_name = "";
 $Error_username = "";
 $Error_email = "";
@@ -8,6 +12,12 @@ $Error_pass_cmp = "";
 $Error_gender = "";
 $customer_gender = "";
 $hasError = 0;
+
+if(isset($_SESSION["User_name"]))
+{
+    header("Location: ../View/customer_dashboard.php");
+
+}
 
 //customer Registration php validation
 if (isset($_REQUEST["submitReg"])) {
@@ -95,3 +105,8 @@ if (isset($_REQUEST["submitReg"])) {
         echo "Registration failed !";
     }
 }
+// else
+// {
+//     header("Location: ../View/login.php");
+// }
+?>

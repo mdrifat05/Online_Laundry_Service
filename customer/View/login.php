@@ -14,25 +14,32 @@ include("../control/CustomerLogin_Control.php");
 </head>
 <body>
 <h1>Login</h1><hr>
+<center>
 <form action="" method="POST">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 <table>
-    <tr><td>Username</td> 
+    <tr><td><b>Username</td> 
     <td><input type="text" name="uname" placeholder="Enter username or email"></td>
     <td> <?php
             echo $usernameError;
        ?>
        </td></tr>
-
-       <tr><td>Password</td>
-       <td><input type="password"name="password" ></td>
+       <tr><td><br><b>Password</td>
+       <td><br><input type="password"name="password"></td>
        <td> <?php
             echo $userPass_Error;
        ?>
        </td></tr>
 </table>
+<br>
 <input type="submit" name="submitlogin" value="Login">
 <input type="Reset" name="Reset" value="Reset"><br>
 <p><a href="customer_registration.php"><p>Don't Have an Account? Register now!</p></a>
 </form>
+</center>
 </body>
 </html>

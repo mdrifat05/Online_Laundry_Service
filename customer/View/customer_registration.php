@@ -9,7 +9,8 @@ include("../control/process.php");
     <title>Registration</title>
 </head>
 <body>
-<h1>Customer Registration</h1><hr>
+<h1>Customer Registration</h1><hr><br><br><br><br>
+<center>
 <form action="" method="POST" enctype="multipart/form-data">
 <table>
     <tr><td>Full Name</td> 
@@ -61,5 +62,6 @@ include("../control/process.php");
 <br><input type="submit" name="submitReg" value="Register">
        <input type="Reset" name="Reset" value="Reset">
 </form>
+</center>
 </body>
 </html>
