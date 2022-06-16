@@ -4,6 +4,15 @@
         "User_name": "abc",
         "Email": "mdrifat2103@gmail.com",
         "Phone_number": "01798649656",
+        "Password": "test",
+        "Confrim_password": "test",
+        "Gender": "Male"
+    },
+    {
+        "Full_name": "Alex",
+        "User_name": "abc1",
+        "Email": "abc@gmail.com",
+        "Phone_number": "01798649656",
         "Password": "aS1!dfgh",
         "Confrim_password": "aS1!dfgh",
         "Gender": "Male"

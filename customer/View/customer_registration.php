@@ -31,7 +31,7 @@ include("../control/process.php");
        ?>
        </td></tr>
        <tr><td>Phone Number</td> 
-       <td><input type="tel" placeholder="" name="phn_number" pattern="^\d{11}$"></td>
+       <td><input type="tel" placeholder="" name="phn_number"></td>
        <td> <?php
             echo $Error_number;
        ?>

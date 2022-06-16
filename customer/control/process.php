@@ -7,7 +7,7 @@ $Error_pass = "";
 $Error_pass_cmp = "";
 $Error_gender = "";
 $customer_gender = "";
-$counter = 0;
+$hasError = 0;
 
 //customer Registration php validation
 if (isset($_REQUEST["submitReg"])) {
@@ -18,56 +18,58 @@ if (isset($_REQUEST["submitReg"])) {
     $customer_password = $_REQUEST['pass'];
     $Customer_confirm_password = $_REQUEST['confirm_pass'];
 
-    if (empty($_REQUEST['f_name']) || strlen($_REQUEST['f_name']) < 3 || preg_match('~[0-9]+~', $_REQUEST['f_name'])) {
+    if (empty($_REQUEST['f_name']) || strlen($_REQUEST['f_name']) < 4 || preg_match('~[0-9]+~', $_REQUEST['f_name'])) {
         $Error_f_name = "Please enter a valid name. numeric value is not allowed !";
+        $hasError = 1;
     } else {
         $full_name = $_REQUEST['f_name'];
-        $counter++;
     }
-
-    if (!preg_match('/^[a-zA-Z0-9]{3,}$/', $customer_username)) {
+    if (!preg_match("/^[a-zA-Z0-9]{3,}$/", $customer_username)) {
         $Error_username = "username allows only alphanumeric & longer than 2 chars !";
+        $hasError = 1;
     } else {
         $customer_username = $_REQUEST['u_name'];
-        $counter++;
     }
 
-    if (!filter_var($customer_email, FILTER_VALIDATE_EMAIL)) {
+    if (empty($customer_email) || !preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix" ,$customer_email)) {
         $Error_email = "Invalid email Address !";
+        $hasError = 1;
     } else {
         $customer_email = $_REQUEST['mail'];
-        $counter++;
     }
-    if (!preg_match('/^[0-9]{11}+$/', $customer_number)) {
+    if (!preg_match("/^[0-9]{11}+$/", $customer_number)) {
         $Error_number = "Enter valid phone number !";
+        $hasError = 1;
     } else {
         $customer_number = $_REQUEST["phn_number"];
-        $counter++;
     }
     $uppercase = preg_match('@[A-Z]@', $customer_password);
     $lowercase = preg_match('@[a-z]@', $customer_password);
     $number    = preg_match('@[0-9]@', $customer_password);
     $specialChars = preg_match('@[^\w]@', $customer_password);
     if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($customer_password) < 8) {
-        $Error_pass = 'Password should be at least 8 characters in length and should include at least one upper & lower case letter, one number, and one special character.';
+        $Error_pass = 'Password should be at least 8 characters in length and should include at least one upper & lower case letter, one number, and one special character!';
+        $hasError = 1;
     } else {
         $customer_password = $_REQUEST['pass'];
-        $counter++;
     }
-    if ($customer_password != $Customer_confirm_password) {
+    if (empty($Customer_confirm_password)) {
+        $Error_pass_cmp = "Enter your confirm password";
+        $hasError = 1;
+    } else if ($customer_password != $Customer_confirm_password) {
         $Error_pass_cmp = "Incorrect confirm password !";
+        $hasError = 1;
     } else {
         $Customer_confirm_password = $_REQUEST['confirm_pass'];
-        $counter++;
     }
     if (isset($_POST["gender"])) {
         $customer_gender = $_POST["gender"];
-        $counter++;
     } else {
-        $Error_gender = "Please select gender !";
+        $Error_gender = "Please select your gender !";
+        $hasError = 1;
     }
 
-    if ($counter == 7) {
+    if ($hasError == 0) {
         $customer_data = array(
             'Full_name' => $full_name,
             'User_name' => $customer_username,
@@ -87,30 +89,9 @@ if (isset($_REQUEST["submitReg"])) {
         if (file_put_contents("../data/data.json", $jsondata)) {
 
             echo "<br>Registration successful !";
-            echo "<html> <a href='login_page.php'> Click Here </a> </html>";
+            echo "<html> <a href='login.php'> Click Here </a> </html>";
         }
     } else {
         echo "Registration failed !";
     }
 }
-
-//customer login 
-session_start();
-$customer_data = file_get_contents('../data/data.json');
-$decoded_data = json_decode($customer_data);
-
-if (isset($_POST["submitlog"])) {
-    foreach ($decoded_data as  $key => $udata) {
-
-
-        if ($udata->User_name == $_POST["uname"] || ($udata->Email==$_POST["uname"]) && $udata->Password == $_POST["password"]) {
-
-            $_SESSION["User_name"] = $_POST["uname"];
-            $_SESSION["Password"] = $_POST["password"];
-            header("location: ../View/customer_dashboard.php");
-        }
-    }
-
-    echo "<h4>Your username or password is incorrect !<h4>";
-}
-?>

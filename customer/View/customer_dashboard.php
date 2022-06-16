@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+include("../control/customerSession_check.php");
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,25 +10,15 @@
 </head>
 <body>
     <header>
-        <div class="left_area">
-        <h3><span>Online </span><span>Laundry </span><span>Service</span></h3>
-        </div>
-        <div class="right_area">
-         
-        </div>
+            <h3>Online Laundry Service</h3>
     </header>
-   
-
-    <div class="sidebar">
         <center>
-        <img src="../images/Best_Laundry.jpg" alt="dashboard banner"width="600">
+            <img src="../images/Best_Laundry.jpg" alt="dashboard banner" width="600">
         </center>
         <a href="customer_dashboard.php">Dashboard</a><br>
-        <a href="customer_profile.php">Profile</a><br> 
-        <a href="customer_dashboard.php">Order History</a><br> 
+        <a href="customer_profile.php">Profile</a><br>
+        <a href="customer_dashboard.php">Order History</a><br>
         <a href="customer_dashboard.php">Contact Us</a><br>
-        <a href="login_page.php" class="logout_btn">Logout</a>
-    </div>
-
+        <a href="../control/logout.php" name ="Logout">Logout</a>
 </body>
 </html>
