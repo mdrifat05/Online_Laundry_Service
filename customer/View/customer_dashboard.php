@@ -1,5 +1,6 @@
 <?php
 include("../control/customerSession_check.php");
+include("../control/customerCookie.php");
 ?>
 <html lang="en">
 <head>
@@ -10,7 +11,7 @@ include("../control/customerSession_check.php");
 </head>
 <body>
     <header>
-            <h3>Online Laundry Service</h3><hr>
+            <h2 align="center">Online Laundry Service</h2><hr>
     </header>
     <a href="customer_dashboard.php">Dashboard</a><br><br>
         <a href="customer_profile.php">Profile</a><br><br>
@@ -19,9 +20,6 @@ include("../control/customerSession_check.php");
         <a href="../control/logout.php" name ="Logout">Logout</a>
         <center>
             <img src="../images/Best_Laundry.jpg" alt="dashboard banner" width="600">
-        </center>
-        
-        
-       
+        </center>   
 </body>
 </html>

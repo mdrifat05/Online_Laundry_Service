@@ -3,10 +3,10 @@ if(!isset($_SESSION))
 { 
     session_start(); 
 }
+include("process.php");
 $HasError=0;
 $usernameError="";
 $userPass_Error="";
-include("process.php");
 $customer_data = file_get_contents('../data/data.json');
 $decoded_data = json_decode($customer_data);
 
@@ -15,6 +15,7 @@ if (isset($_POST["submitlogin"])) {
         if (($udata->User_name == $_POST["uname"] || $udata->Email==$_POST["uname"]) && $udata->Password == $_POST["password"]) {
 
             $_SESSION["User_name"] = $_POST["uname"];
+            $_SESSION["email"]=$_POST["mail"];
             $_SESSION["Password"] = $_POST["password"];
              if (!empty($_SESSION["User_name"]))
              {

@@ -9,7 +9,10 @@ include("../control/process.php");
     <title>Registration</title>
 </head>
 <body>
-<h1>Customer Registration</h1><hr><br><br><br><br>
+<h1>Customer Registration</h1><hr><br>
+
+<pre><h4>                                                                                                                        GO BACK TO LOGIN <a href="../View/login.php">Click here</a></h4></pre>
+
 <center>
 <form action="" method="POST" enctype="multipart/form-data">
 <table>
@@ -39,8 +42,10 @@ include("../control/process.php");
        </td></tr>
        <tr><td>Birthday</td> 
        <td><input type="date" placeholder="" name="age"></td>
-       <td>
-
+       <td> <?php
+            echo $Error_date;
+       ?>
+        </td></tr>
        <tr><td>Password</td>
        <td><input type="password" placeholder="" name="pass"></td>
 
