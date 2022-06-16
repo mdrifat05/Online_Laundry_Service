@@ -37,6 +37,10 @@ include("../control/process.php");
             echo $Error_number;
        ?>
        </td></tr>
+       <tr><td>Birthday</td> 
+       <td><input type="date" placeholder="" name="age"></td>
+       <td>
+
        <tr><td>Password</td>
        <td><input type="password" placeholder="" name="pass"></td>
 
