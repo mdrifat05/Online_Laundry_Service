@@ -35,3 +35,4 @@ if (isset($_POST["submitlogin"])) {
         $userPass_Error= "Your username or password is incorrect !";
     }
 }
+?>
