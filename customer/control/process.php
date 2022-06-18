@@ -101,12 +101,12 @@ if (isset($_REQUEST["submitReg"])) {
         );
 
         //json work
-        $existing_Data = file_get_contents('../data/data.json');
+        $existing_Data = file_get_contents('../data/customer_data.json');
         $customer_JsonData = json_decode($existing_Data);
 
         $customer_JsonData[] = $customer_data;
         $jsondata = json_encode($customer_JsonData, JSON_PRETTY_PRINT);
-        if (file_put_contents("../data/data.json", $jsondata)) {
+        if (file_put_contents("../data/customer_data.json", $jsondata)) {
 
             echo "<br>Registration successful !";
         }

@@ -11,7 +11,7 @@ include("../control/adminRegistrationProcess.php");
 <body>
 <h1>Admin Registration</h1><hr><br>
 
-<pre><h4>                                                                                                                        GO BACK TO LOGIN <a href="../View/login.php">Click here</a></h4></pre>
+<pre><h4>                                                                                                                        GO BACK TO LOGIN <a href="../../customer/View/login.php">Click here</a></h4></pre>
 
 <div align ="center">
 <form action="" method="POST" enctype="multipart/form-data">

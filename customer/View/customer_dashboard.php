@@ -21,8 +21,6 @@ include("../control/customerCookie.php");
         <a href="../control/logout.php" name ="Logout">Logout</a>
         <div align="center">
             <img src="../images/Best_Laundry.jpg" alt="dashboard banner" width="600">
-        </div>
-            
-     
+        </div> 
 </body>
 </html>

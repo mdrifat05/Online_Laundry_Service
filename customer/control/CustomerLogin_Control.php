@@ -11,7 +11,7 @@ $HasError=0;
 $usernameError="";
 $userPass_Error="";
 
-    $customer_data = file_get_contents('../data/data.json');
+    $customer_data = file_get_contents('../data/customer_data.json');
     $decoded_data = json_decode($customer_data);
     
 if (isset($_POST["submitlogin"])) {
