@@ -14,13 +14,11 @@ include("../control/CustomerLogin_Control.php");
 </head>
 <body>
 <h1>Login</h1><hr>
+<br><br>
+<pre><h4>                                                                                                                        GO BACK TO HOME PAGE<a href="../../home/view/home.php"> Click here</a></h4></pre>
 <div align="center">
 <form action="" method="POST">
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <br><br><br>
 <table> 
     <tr><td><b>Select User Role &nbsp; </td>
        <td><select name="role" id="role">

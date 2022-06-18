@@ -3,6 +3,9 @@ if(!isset($_SESSION))
 { 
     session_start(); 
 }
+if(isset($_POST["register"])){
+    header("Location: ../../home/view/registrationRole.php");
+}
 include("process.php");
 $HasError=0;
 $usernameError="";

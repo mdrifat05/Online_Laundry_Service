@@ -36,5 +36,15 @@
         "Password": "123",
         "Confrim_password": "aS1!dfgh",
         "Gender": "Male"
+    },
+    {
+        "Full_name": "Abul Azad",
+        "User_name": "Azad",
+        "Email": "azad@gmail.com",
+        "Phone_number": "01768971643",
+        "Age": "2012-03-01",
+        "Password": "Azad12345@",
+        "Confrim_password": "Azad12345@",
+        "Gender": "Male"
     }
 ]
