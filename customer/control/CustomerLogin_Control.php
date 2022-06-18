@@ -7,10 +7,13 @@ include("process.php");
 $HasError=0;
 $usernameError="";
 $userPass_Error="";
-$customer_data = file_get_contents('../data/data.json');
-$decoded_data = json_decode($customer_data);
 
+    $customer_data = file_get_contents('../data/data.json');
+    $decoded_data = json_decode($customer_data);
+    
 if (isset($_POST["submitlogin"])) {
+    $selected_role = $_POST['role'];
+    if($selected_role == "customer"){
     foreach ($decoded_data as  $key => $udata) {
         if (($udata->User_name == $_POST["uname"] || $udata->Email==$_POST["uname"]) && $udata->Password == $_POST["password"]) {
 
@@ -35,4 +38,6 @@ if (isset($_POST["submitlogin"])) {
         $userPass_Error= "Your username or password is incorrect !";
     }
 }
+}
+
 ?>
