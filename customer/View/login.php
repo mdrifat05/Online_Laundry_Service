@@ -40,9 +40,10 @@ include("../control/CustomerLogin_Control.php");
        ?>
        </td></tr>
 </table>
-<br>
-<input type="submit" name="submitlogin" value="Login">
-<input type="Reset" name="Reset" value="Reset"><br>
+<table><td><td><td><td><td><td><td><td><td><td><td><td><td><td><td><td><td><td>
+<input type="submit" name="submitlogin" value="Login"></td>
+&nbsp;&nbsp;<td><td><input type="Reset" name="Reset" value="Reset"><br></td>
+</table>
 <p>Don't Have an Account? <input type="submit" name="register" value="Register Now"> </p>
 </form>
 </div>
