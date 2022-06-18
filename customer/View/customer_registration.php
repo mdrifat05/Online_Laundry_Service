@@ -13,7 +13,7 @@ include("../control/process.php");
 
 <pre><h4>                                                                                                                        GO BACK TO LOGIN <a href="../View/login.php">Click here</a></h4></pre>
 
-<center>
+<div align ="center">
 <form action="" method="POST" enctype="multipart/form-data">
 <table>
     <tr><td>Full Name</td> 
@@ -71,6 +71,6 @@ include("../control/process.php");
 <br><input type="submit" name="submitReg" value="Register">
        <input type="Reset" name="Reset" value="Reset">
 </form>
-</center>
+</div>
 </body>
 </html>

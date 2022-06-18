@@ -11,15 +11,18 @@ include("../control/customerCookie.php");
 </head>
 <body>
     <header>
-            <h2 align="center">Online Laundry Service</h2><hr>
+        <div align="center"><h2>Online Laundry Service</h2><hr></div>
+           
     </header>
     <a href="customer_dashboard.php">Dashboard</a><br><br>
         <a href="customer_profile.php">Profile</a><br><br>
         <a href="customer_dashboard.php">Order History</a><br><br>
         <a href="customer_dashboard.php">Contact Us</a><br><br>
         <a href="../control/logout.php" name ="Logout">Logout</a>
-        <center>
+        <div align="center">
             <img src="../images/Best_Laundry.jpg" alt="dashboard banner" width="600">
-        </center>   
+        </div>
+            
+     
 </body>
 </html>
