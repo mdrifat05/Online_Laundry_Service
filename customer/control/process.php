@@ -3,21 +3,25 @@ if(!isset($_SESSION))
 { 
     session_start(); 
 }
+
+if(isset($_SESSION["User_name"]))
+{
+    header("Location: ../View/customer_dashboard.php");
+}
+if(isset($_POST["register"])){
+    header("Location: ../../home/view/registrationRole.php");
+}
+
 $Error_f_name = "";
 $Error_username = "";
 $Error_email = "";
 $Error_number = "";
+$Error_date="";
 $Error_pass = "";
 $Error_pass_cmp = "";
 $Error_gender = "";
 $customer_gender = "";
 $hasError = 0;
-
-if(isset($_SESSION["User_name"]))
-{
-    header("Location: ../View/customer_dashboard.php");
-
-}
 
 //customer Registration php validation
 if (isset($_REQUEST["submitReg"])) {
@@ -25,6 +29,7 @@ if (isset($_REQUEST["submitReg"])) {
     $customer_username = $_REQUEST['u_name'];
     $customer_email = $_REQUEST['mail'];
     $customer_number = $_REQUEST["phn_number"];
+    $customer_age=$_REQUEST['age'];
     $customer_password = $_REQUEST['pass'];
     $Customer_confirm_password = $_REQUEST['confirm_pass'];
 
@@ -53,6 +58,14 @@ if (isset($_REQUEST["submitReg"])) {
     } else {
         $customer_number = $_REQUEST["phn_number"];
     }
+    if(empty($customer_age)){
+        $Error_date="Please enter your date of birth";
+        $hasError = 1;
+    }
+    else{
+        $customer_age=$_REQUEST['age'];
+    }
+
     $uppercase = preg_match('@[A-Z]@', $customer_password);
     $lowercase = preg_match('@[a-z]@', $customer_password);
     $number    = preg_match('@[0-9]@', $customer_password);
@@ -85,9 +98,10 @@ if (isset($_REQUEST["submitReg"])) {
             'User_name' => $customer_username,
             'Email' => $customer_email,
             'Phone_number' => $customer_number,
+            'Age' => $customer_age,
             'Password' => $customer_password,
             'Confrim_password' => $Customer_confirm_password,
-            'Gender' => $customer_gender,
+            'Gender' => $customer_gender
         );
 
         //json work
@@ -99,7 +113,6 @@ if (isset($_REQUEST["submitReg"])) {
         if (file_put_contents("../data/data.json", $jsondata)) {
 
             echo "<br>Registration successful !";
-            echo "<html> <a href='login.php'> Click Here </a> </html>";
         }
     } else {
         echo "Registration failed !";

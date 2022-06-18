@@ -14,7 +14,7 @@ include("../control/CustomerLogin_Control.php");
 </head>
 <body>
 <h1>Login</h1><hr>
-<center>
+<div align="center">
 <form action="" method="POST">
     <br>
     <br>
@@ -38,8 +38,8 @@ include("../control/CustomerLogin_Control.php");
 <br>
 <input type="submit" name="submitlogin" value="Login">
 <input type="Reset" name="Reset" value="Reset"><br>
-<p><a href="customer_registration.php"><p>Don't Have an Account? Register now!</p></a>
+<p>Don't Have an Account? <input type="submit" name="register" value="Register Now"> </p>
 </form>
-</center>
+</div>
 </body>
 </html>
