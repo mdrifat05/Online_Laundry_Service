@@ -8,10 +8,6 @@ if(isset($_SESSION["User_name"]))
 {
     header("Location: ../View/customer_dashboard.php");
 }
-if(isset($_POST["register"])){
-    header("Location: ../../home/view/registrationRole.php");
-}
-
 $Error_f_name = "";
 $Error_username = "";
 $Error_email = "";
