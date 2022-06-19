@@ -13,11 +13,9 @@
 <body>
 <form action="" method="POST">
     <br>
-    <br>
     <center>
-    
-    <h1> SMART DHOPA LAUNDRY SERVICE </h1>
-    <h4>Let us wash dry fold and repeat</h4>
+    <h1> SMART DHOPA LAUNDRY SERVICE </h1><hr>
+    <marquee><h4>Let us wash dry fold and repeat</h4></marquee> 
     <br>
         <i>JOIN WITH US</i> &nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="submitSignUp" value="SignUp"> 
         &nbsp;&nbsp;<input type="submit" name="submitSignIn" value="SignIn">  

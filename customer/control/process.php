@@ -20,46 +20,46 @@ $customer_gender = "";
 $hasError = 0;
 
 //customer Registration php validation
-if (isset($_REQUEST["submitReg"])) {
-    $full_name = $_REQUEST['f_name'];
-    $customer_username = $_REQUEST['u_name'];
-    $customer_email = $_REQUEST['mail'];
-    $customer_number = $_REQUEST["phn_number"];
-    $customer_age=$_REQUEST['age'];
-    $customer_password = $_REQUEST['pass'];
-    $Customer_confirm_password = $_REQUEST['confirm_pass'];
+if (isset($_POST["submitReg"])) {
+    $full_name = $_POST['f_name'];
+    $customer_username = $_POST['u_name'];
+    $customer_email = $_POST['mail'];
+    $customer_number = $_POST["phn_number"];
+    $customer_age=$_POST['age'];
+    $customer_password = $_POST['pass'];
+    $Customer_confirm_password = $_POST['confirm_pass'];
 
-    if (empty($_REQUEST['f_name']) || strlen($_REQUEST['f_name']) < 4 || preg_match('~[0-9]+~', $_REQUEST['f_name'])) {
+    if (empty($_POST['f_name']) || strlen($_POST['f_name']) < 4 || preg_match('~[0-9]+~', $_POST['f_name'])) {
         $Error_f_name = "Please enter a valid name. numeric value is not allowed !";
         $hasError = 1;
     } else {
-        $full_name = $_REQUEST['f_name'];
+        $full_name = $_POST['f_name'];
     }
     if (!preg_match("/^[a-zA-Z0-9]{3,}$/", $customer_username)) {
         $Error_username = "username allows only alphanumeric & longer than 2 chars !";
         $hasError = 1;
     } else {
-        $customer_username = $_REQUEST['u_name'];
+        $customer_username = $_POST['u_name'];
     }
 
     if (empty($customer_email) || !preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix" ,$customer_email)) {
         $Error_email = "Invalid email Address !";
         $hasError = 1;
     } else {
-        $customer_email = $_REQUEST['mail'];
+        $customer_email = $_POST['mail'];
     }
     if (!preg_match("/^[0-9]{11}+$/", $customer_number)) {
         $Error_number = "Enter valid phone number !";
         $hasError = 1;
     } else {
-        $customer_number = $_REQUEST["phn_number"];
+        $customer_number = $_POST["phn_number"];
     }
     if(empty($customer_age)){
         $Error_date="Please enter your date of birth";
         $hasError = 1;
     }
     else{
-        $customer_age=$_REQUEST['age'];
+        $customer_age=$_POST['age'];
     }
 
     $uppercase = preg_match('@[A-Z]@', $customer_password);
@@ -70,7 +70,7 @@ if (isset($_REQUEST["submitReg"])) {
         $Error_pass = 'Password should be at least 8 characters in length and should include at least one upper & lower case letter, one number, and one special character!';
         $hasError = 1;
     } else {
-        $customer_password = $_REQUEST['pass'];
+        $customer_password = $_POST['pass'];
     }
     if (empty($Customer_confirm_password)) {
         $Error_pass_cmp = "Enter your confirm password";
@@ -79,7 +79,7 @@ if (isset($_REQUEST["submitReg"])) {
         $Error_pass_cmp = "Incorrect confirm password !";
         $hasError = 1;
     } else {
-        $Customer_confirm_password = $_REQUEST['confirm_pass'];
+        $Customer_confirm_password = $_POST['confirm_pass'];
     }
     if (isset($_POST["gender"])) {
         $customer_gender = $_POST["gender"];
