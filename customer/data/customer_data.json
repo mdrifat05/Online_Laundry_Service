@@ -46,5 +46,25 @@
         "Password": "Azad12345@",
         "Confrim_password": "Azad12345@",
         "Gender": "Male"
+    },
+    {
+        "Full_name": "Rifat islam",
+        "User_name": "rifat123",
+        "Email": "mdrifat2103@gmail.com",
+        "Phone_number": "01798649656",
+        "Age": "2022-06-07",
+        "Password": "aS1!dfgh",
+        "Confrim_password": "aS1!dfgh",
+        "Gender": "Male"
+    },
+    {
+        "Full_name": "Rifat hossen",
+        "User_name": "rifat12",
+        "Email": "mdrifat2103@gmail.com",
+        "Phone_number": "01798649656",
+        "Age": "2019-02-20",
+        "Password": "aS1!dfgh",
+        "Confrim_password": "aS1!dfgh",
+        "Gender": "Male"
     }
 ]

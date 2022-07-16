@@ -46,6 +46,11 @@ include("../control/adminRegistrationProcess.php");
             echo $Error_date;
        ?>
         </td></tr>
+        <tr><td>Reference no: </td>
+        <td><input type ="number" placeholder="" name="ref"></td>
+        <td><?php
+               echo $Error_ref;
+        ?>
        <tr><td>Password</td>
        <td><input type="password" placeholder="" name="pass"></td>
 

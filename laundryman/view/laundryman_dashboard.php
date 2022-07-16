@@ -16,10 +16,5 @@
         <a href="laundryman_dashboard.php">Order History</a><br><br>
         <a href="laundryman_dashboard.php">Contact Us</a><br><br>
         <a href="../control/laundryman_logout.php" name ="Logout">Logout</a>
-        <!-- <div align="center">
-            <img src="../images/Best_Laundry.jpg" alt="dashboard banner" width="600">
-        </div> -->
-            
-     
 </body>
 </html>

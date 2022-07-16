@@ -39,18 +39,46 @@ if (isset($_POST["submitlogin"])) {
 
                 $HasError1 = 1;
             }
+
         }
-      
-    } 
-    // else {
-    //     $_SESSION["User_name"] += 1;
-    //     if ($_SESSION["User_name"] > 2) {
-    //         header('location:timeout.php');
-    //     }
-    // }
-}
+        
 if ($HasError1 == 1) {
     $userPass_Error = "Your username or password is incorrect !";
+      
+    } 
+}
+}
+
+//Admin Log in
+    $admin_data = file_get_contents('../../admin/data/data.json');
+$decoded_admin_data = json_decode($admin_data);
+
+if (isset($_POST["submitlogin"])) {
+    $selected_role = $_POST['role'];
+    if ($selected_role == "admin") {
+        foreach ($decoded_admin_data as  $key => $udata) {
+            if (($udata->User_name == $_POST["uname"] || $udata->Email == $_POST["uname"]) && $udata->Password == $_POST["password"]) {
+
+                $_SESSION["User_name"] = $_POST["uname"];
+                $_SESSION["email"] = $_POST["mail"];
+                $_SESSION["Password"] = $_POST["password"];
+                if (!empty($_SESSION["User_name"])) {
+                    header("Location: ../../admin/View/adminDashboard.php");
+                }
+            }
+            if (empty($_REQUEST["uname"]) || (empty($_REQUEST['password']))) {
+                $usernameError = "Enter your user name and password !";
+            } else {
+
+                $HasError1 = 1;
+            }
+        }
+        
+if ($HasError1 == 1) {
+    $userPass_Error = "Your username or password is incorrect !";
+      
+    } 
+}
 }
 
 
