@@ -1,6 +1,6 @@
 <?php
-include("../control/customerSession_check.php");
-include("../control/customerCookie.php");
+//include("../control/customerSession_check.php");
+//include("../control/customerCookie.php");
 ?>
 <html lang="en">
 <head>
@@ -18,7 +18,7 @@ include("../control/customerCookie.php");
         <a href="customer_profile.php">Profile</a><br><br>
         <a href="customer_dashboard.php">Order History</a><br><br>
         <a href="customer_dashboard.php">Contact Us</a><br><br>
-        <a href="../control/logout.php" name ="Logout">Logout</a>
+        <a href="../../home/control/logout.php" name ="Logout">Logout</a>
         <div align="center">
             <img src="../images/Best_Laundry.jpg" alt="dashboard banner" width="600">
         </div> 

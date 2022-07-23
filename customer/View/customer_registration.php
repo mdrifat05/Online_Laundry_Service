@@ -11,7 +11,7 @@ include("../control/process.php");
 <body>
 <h1>Customer Registration</h1><hr><br>
 
-<pre><h4>                                                                                                                        GO BACK TO LOGIN <a href="../View/login.php">Click here</a></h4></pre>
+<pre><h4>                                                                                                                        GO BACK TO LOGIN <a href="../../home/view/login.php">Click here</a></h4></pre>
 
 <div align ="center">
 <form action="" method="POST" enctype="multipart/form-data">
@@ -35,7 +35,7 @@ include("../control/process.php");
        ?>
        </td></tr>
        <tr><td>Phone Number</td> 
-       <td><input type="tel" placeholder="" name="phn_number"></td>
+       <td><input type="number" placeholder="" name="phn_number"></td>
        <td> <?php
             echo $Error_number;
        ?>
@@ -67,6 +67,12 @@ include("../control/process.php");
             echo $Error_gender;
        ?>
       </td></tr>
+      <tr><td>Complete Address</td>
+       <td><textarea style="overflow:auto;resize:none" name="c_address" rows="5" cols="25"></textarea></td>
+       <td> <?php
+            echo $Error_address;
+       ?>
+        </td></tr>
 </table>
 <br><input type="submit" name="submitReg" value="Register">
        <input type="Reset" name="Reset" value="Reset">

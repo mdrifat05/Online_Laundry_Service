@@ -1,13 +1,15 @@
 <?php
+include_once('../model/customer_db.php');
 if(!isset($_SESSION)) 
 { 
     session_start(); 
 }
 
-if(isset($_SESSION["User_name"]))
-{
-    header("Location: ../View/customer_dashboard.php");
-}
+// if(isset($_SESSION["User_name"]))
+// {
+//     header("Location: ../View/customer_dashboard.php");
+// }
+
 $Error_f_name = "";
 $Error_username = "";
 $Error_email = "";
@@ -16,6 +18,7 @@ $Error_date="";
 $Error_pass = "";
 $Error_pass_cmp = "";
 $Error_gender = "";
+$Error_address ="";
 $customer_gender = "";
 $hasError = 0;
 
@@ -27,7 +30,8 @@ if (isset($_POST["submitReg"])) {
     $customer_number = $_POST["phn_number"];
     $customer_age=$_POST['age'];
     $customer_password = $_POST['pass'];
-    $Customer_confirm_password = $_POST['confirm_pass'];
+    $customer_confirm_password = $_POST['confirm_pass'];
+    $customer_address = $_POST['c_address'];
 
     if (empty($_POST['f_name']) || strlen($_POST['f_name']) < 4 || preg_match('~[0-9]+~', $_POST['f_name'])) {
         $Error_f_name = "Please enter a valid name. numeric value is not allowed !";
@@ -72,14 +76,14 @@ if (isset($_POST["submitReg"])) {
     } else {
         $customer_password = $_POST['pass'];
     }
-    if (empty($Customer_confirm_password)) {
+    if (empty($customer_confirm_password)) {
         $Error_pass_cmp = "Enter your confirm password";
         $hasError = 1;
-    } else if ($customer_password != $Customer_confirm_password) {
+    } else if ($customer_password != $customer_confirm_password) {
         $Error_pass_cmp = "Incorrect confirm password !";
         $hasError = 1;
     } else {
-        $Customer_confirm_password = $_POST['confirm_pass'];
+        $customer_confirm_password = $_POST['confirm_pass'];
     }
     if (isset($_POST["gender"])) {
         $customer_gender = $_POST["gender"];
@@ -87,35 +91,68 @@ if (isset($_POST["submitReg"])) {
         $Error_gender = "Please select your gender !";
         $hasError = 1;
     }
-
-    if ($hasError == 0) {
-        $customer_data = array(
-            'Full_name' => $full_name,
-            'User_name' => $customer_username,
-            'Email' => $customer_email,
-            'Phone_number' => $customer_number,
-            'Age' => $customer_age,
-            'Password' => $customer_password,
-            'Confrim_password' => $Customer_confirm_password,
-            'Gender' => $customer_gender
-        );
-
-        //json work
-        $existing_Data = file_get_contents('../data/customer_data.json');
-        $customer_JsonData = json_decode($existing_Data);
-
-        $customer_JsonData[] = $customer_data;
-        $jsondata = json_encode($customer_JsonData, JSON_PRETTY_PRINT);
-        if (file_put_contents("../data/customer_data.json", $jsondata)) {
-
-            echo "<br>Registration successful !";
-        }
-    } else {
-        echo "Registration failed !";
+    if(empty($customer_address)){
+        $Error_address = "please fill-up your address !";
+        $hasError = 1;
     }
+    else{
+        $customer_address = $_POST['c_address'];
+    }
+
+ if ($hasError == 0) {
+    //check if username already exists
+    $customer_db = new customer_db();
+    $connobj=$customer_db->opencon();
+    $results = $customer_db->check_username($customer_username, 'customer_info', $connobj);
+    if ($results->num_rows>0) {
+         echo "Username already exists !";
+            $hasError = 1;
+    } else {
+        if($hasError==0){
+            $customer_db->InsertCustomer_data($full_name, $customer_username, $customer_email, $customer_number, $customer_age, 
+            $customer_password, $customer_gender, $customer_address, 'customer','customer_info',$connobj);
+            $customer_db->InsertLogin_data($customer_username, $customer_email, $customer_password, 'customer', $connobj);
+            echo "Registration successful !";
+            $customer_db->closecon($connobj);
+            
+        }else{
+           
+            echo "Error occured !".$conn->err;
+    }
+
+ }
+           
 }
+   
+}
+
+
+    // if ($hasError == 0) {
+    //     $customer_data = array(
+    //         'Full_name' => $full_name,
+    //         'User_name' => $customer_username,
+    //         'Email' => $customer_email,
+    //         'Phone_number' => $customer_number,
+    //         'Age' => $customer_age,
+    //         'Password' => $customer_password,
+    //         'Confrim_password' => $Customer_confirm_password,
+    //         'Gender' => $customer_gender
+    //     );
+
+    //     //json work
+    //     $existing_Data = file_get_contents('../data/customer_data.json');
+    //     $customer_JsonData = json_decode($existing_Data);
+
+    //     $customer_JsonData[] = $customer_data;
+    //     $jsondata = json_encode($customer_JsonData, JSON_PRETTY_PRINT);
+    //     if (file_put_contents("../data/customer_data.json", $jsondata)) {
+
+    //         echo "<br>Registration successful !";
+    //     }
+    // } else {
+    //     echo "Registration failed !";
+    // }
 // else
 // {
 //     header("Location: ../View/login.php");
 // }
-?>

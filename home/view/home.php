@@ -1,6 +1,6 @@
 <?php
 
-    include("../control/homeProcess.php");
+include("../control/homeProcess.php");
 ?>
 <html lang="en">
 <head>

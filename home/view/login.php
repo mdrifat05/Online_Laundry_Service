@@ -1,9 +1,11 @@
 <?php
+include("../control/login_Control.php");
+
 if(!isset($_SESSION)) 
 { 
     session_start(); 
 }
-include("../control/CustomerLogin_Control.php");
+
 ?>
 <html lang="en">
 <head>
@@ -20,29 +22,33 @@ include("../control/CustomerLogin_Control.php");
 <form action="" method="POST">
     <br><br><br>
 <table> 
-    <tr><td><b>Select User Role &nbsp; </td>
+    <!-- <tr><td><b>Select User Role &nbsp; </td>
        <td><select name="role" id="role">
     <option value="customer">Customer</option>
     <option value="rider">Rider</option>
     <option value="laundry">Laundry</option>
     <option value="admin">Admin</option>
-  </select></td>
+  </select></td> -->
+  
     <tr><td><br><b>Username</td> 
-    <td><br><input type="text" name="uname" placeholder="Enter username or email"></td>
-    <td> <?php
-            echo $usernameError;
+    <td><br><input type="text" name="uname" placeholder=""></td>
+    <td><br> <?php
+           echo $usernameError;
        ?>
-       </td></tr>
+       </td></tr></tr>
        <tr><td><br><b>Password</td>
        <td><br><input type="password"name="password"></td>
-       <td> <?php
-            echo $userPass_Error;
+       <td> <br><?php
+              
+              echo  $userPass_Error;
        ?>
        </td></tr>
 </table>
+
 <table><td><td><td><td><td><td><td><td><td><td><td><td><td><td><td><td><td><td>
+<p>forgot password? <a href="../../home/view/forgot_password.php">Click here</a></p>
 <input type="submit" name="submitlogin" value="Login"></td>
-&nbsp;&nbsp;<td><td><input type="Reset" name="Reset" value="Reset"><br></td>
+<!-- &nbsp;&nbsp;<td><td><input type="Reset" name="Reset" value="Reset"><br></td> -->
 </table>
 <p>Don't Have an Account? <input type="submit" name="register" value="Register Now"> </p>
 </form>
