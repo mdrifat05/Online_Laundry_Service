@@ -8,9 +8,8 @@ if (!isset($_SESSION)) {
 if (isset($_POST["register"])) {
     header("Location: ../../home/view/registrationRole.php");
 }
-// if(!empty($_SESSION["Uname"])){
-//     header("Location: ../../customer/view/customer_dashboard.php");
-// }
+
+
 $HasError1 = 0;
 $usernameError = "";
 $userPass_Error = "";
@@ -65,49 +64,6 @@ if (isset($_POST["submitlogin"])) {
     }
 }
 
-
-
-//customer login 
-// if(isset($_POST["submitlogin"])){
-//     if(empty($_POST["uname"]) ){
-//         $usernameError = "Username can't be empty";
-//         $HasError1 = 1;
-//     }
-//     if(empty($_POST["password"])){
-//         $userPass_Error = "Password can't be empty";
-//         $HasError1 = 1;
-//     }
-    
-//     if($HasError1==0){
-//         $customer_db = new login_cls();
-//         $conobj=$customer_db->opencon();
-//         $results= $customer_db->check_login($_POST["uname"], $_POST["password"], "login_info", $conobj);
-//         if($results->num_rows>0){
-//             $username = $_POST["uname"];
-//             $password = $_POST["password"];
-//            // fetch data from the database
-//            $login_role = '';
-//            while($c_row = $results->fetch_assoc()){
-//                     $login_username = $c_row["login_username"];
-//                     $login_password = $c_row["login_password"];
-//                     $login_role= $c_row["login_role"];
-//            } 
-           
-       
-//             if($login_role=="customer"){
-//             $_SESSION["Uname"] = $username;
-//             $_SESSION["Pass"] = $password;
-//             //header("Location: ../../customer/view/customer_dashboard.php");
-//                 echo $login_role;
-//             }
-         
-//         }
-
-//     } else {
-//         echo "username or password is incorrect";
-//     }
-
-// }
 
 
 //login with json
@@ -234,3 +190,5 @@ if (isset($_POST["submitlogin"])) {
 //         }
 //     }
 // }
+
+?>
