@@ -13,10 +13,9 @@ if (isset($_POST["register"])) {
 $HasError1 = 0;
 $usernameError = "";
 $userPass_Error = "";
-
+$userNotfound = "";
 
 if (isset($_POST["submitlogin"])) {
-    if (isset($_POST["submitlogin"])) {
         if (empty($_POST["uname"])) {
             $usernameError = "Username can't be empty";
             $HasError1 = 1;
@@ -30,12 +29,12 @@ if (isset($_POST["submitlogin"])) {
             $password = $_POST["password"];
             $customer_db = new login_cls();
             $conobj = $customer_db->opencon();
-            $results = $customer_db->check_login($_POST["uname"], $_POST["password"], "login_info", $conobj);
+            $results = $customer_db->check_login($username, $password, "login_info", $conobj);
             if ($results->num_rows > 0) {
                 echo "logged in";
                 $_SESSION["role"] = '';
                 while ($c_row = $results->fetch_assoc()) {
-                    $_SESSION["Uname"] = $c_row["login_username"];
+                    $_SESSION["uname"] = $c_row["login_username"];
                     $_SESSION["role"] = $c_row["login_role"];
                 }
                 switch ($_SESSION["role"]) {
@@ -57,9 +56,8 @@ if (isset($_POST["submitlogin"])) {
                         session_destroy();
                         break;
                 }
-            } else {
-                echo "User not found";
-            }
+        } else {
+            $userNotfound = "User not found";
         }
     }
 }

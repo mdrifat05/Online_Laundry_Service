@@ -12,46 +12,46 @@ if(!isset($_SESSION))
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/loginStyle.css">
     <title>login</title>
 </head>
 <body>
-<h1>Login</h1><hr>
-<br><br>
-<pre><h4>                                                                                                                        GO BACK TO HOME PAGE<a href="../../home/view/home.php"> Click here</a></h4></pre>
-<div align="center">
-<form action="" method="POST">
-    <br><br><br>
-<table> 
-    <!-- <tr><td><b>Select User Role &nbsp; </td>
-       <td><select name="role" id="role">
-    <option value="customer">Customer</option>
-    <option value="rider">Rider</option>
-    <option value="laundry">Laundry</option>
-    <option value="admin">Admin</option>
-  </select></td> -->
-  
-    <tr><td><br><b>Username</td> 
-    <td><br><input type="text" name="uname" placeholder=""></td>
-    <td><br> <?php
-           echo $usernameError;
-       ?>
-       </td></tr></tr>
-       <tr><td><br><b>Password</td>
-       <td><br><input type="password"name="password"></td>
-       <td> <br><?php
-              
-              echo  $userPass_Error;
-       ?>
-       </td></tr>
-</table>
+    <div class="center">
+        <h1>LOGIN</h1> 
+        <div>
+            <center>
+        <?php
+         echo "<span style ='color:red;'>".$userNotfound;
+        ?>
+        </center>
+        </div>       
+        <form action="" method="POST">
+        
+        <div class="txt_field">
+                <input type="text" name="uname" placeholder="">
+                <span></span>
+                <label>Username</label>
+                <?php
+                    echo $usernameError;
+                ?>
+        </div>
 
-<table><td><td><td><td><td><td><td><td><td><td><td><td><td><td><td><td><td><td>
-<p>forgot password? <a href="../../home/view/forgot_password.php">Click here</a></p>
-<input type="submit" name="submitlogin" value="Login"></td>
-<!-- &nbsp;&nbsp;<td><td><input type="Reset" name="Reset" value="Reset"><br></td> -->
-</table>
-<p>Don't Have an Account? <input type="submit" name="register" value="Register Now"> </p>
-</form>
-</div>
+        <div class="txt_field">
+            <input type="password" name="password" placeholder="">
+            <span></span>
+            <label>Password</label>
+                <?php
+                    echo  $userPass_Error;
+                ?>  
+        </div>
+        
+            <div class="pass">forgot password? <a href="../../home/view/forgot_password.php">Click here</a></div>
+            <input type="submit" class="loginButton" name="submitlogin" value="Login">
+            <div class="signup_link">
+                Not a member? <a href="registrationRole.php"> sign up</a>
+            </div>
+
+        </form>
+    </div>
 </body>
 </html>

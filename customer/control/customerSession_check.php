@@ -4,9 +4,9 @@
 //     echo "<h5>Welcome ".$_SESSION["User_name"]."</h5>";  
 // }
 
-// if(empty($_SESSION["User_name"])){
+if(empty($_SESSION["uname"])){
 
-//     header("Location: ../View/login.php");
-// }
+    header("Location: ../View/login.php");
+}
 
 ?>

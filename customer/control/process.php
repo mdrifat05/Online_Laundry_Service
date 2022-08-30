@@ -34,13 +34,13 @@ if (isset($_POST["submitReg"])) {
     $customer_address = $_POST['c_address'];
 
     if (empty($_POST['f_name']) || strlen($_POST['f_name']) < 4 || preg_match('~[0-9]+~', $_POST['f_name'])) {
-        $Error_f_name = "Please enter a valid name. numeric value is not allowed !";
+        $Error_f_name = "Numeric value is not allowed !";
         $hasError = 1;
     } else {
         $full_name = $_POST['f_name'];
     }
-    if (!preg_match("/^[a-zA-Z0-9]{3,}$/", $customer_username)) {
-        $Error_username = "username allows only alphanumeric & longer than 2 chars !";
+    if (!preg_match("/^[a-zA-Z ]{3,20}$/", $customer_username)) {
+        $Error_username = "username allows characters numbers ";
         $hasError = 1;
     } else {
         $customer_username = $_POST['u_name'];
@@ -71,7 +71,7 @@ if (isset($_POST["submitReg"])) {
     $number    = preg_match('@[0-9]@', $customer_password);
     $specialChars = preg_match('@[^\w]@', $customer_password);
     if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($customer_password) < 8) {
-        $Error_pass = 'Password should be at least 8 characters in length and should include at least one upper & lower case letter, one number, and one special character!';
+        $Error_pass = 'Require 8 characters one upper & lower case letter, one number, one special character!';
         $hasError = 1;
     } else {
         $customer_password = $_POST['pass'];
@@ -112,7 +112,7 @@ if (isset($_POST["submitReg"])) {
             $customer_db->InsertCustomer_data($full_name, $customer_username, $customer_email, $customer_number, $customer_age, 
             $customer_password, $customer_gender, $customer_address, 'customer','customer_info',$connobj);
             $customer_db->InsertLogin_data($customer_username, $customer_email, $customer_password, 'customer', $connobj);
-            echo "Registration successful !";
+            header("Location: ../../home/view/login.php");
             $customer_db->closecon($connobj);
             
         }else{
@@ -125,7 +125,6 @@ if (isset($_POST["submitReg"])) {
 }
    
 }
-
 
     // if ($hasError == 0) {
     //     $customer_data = array(
